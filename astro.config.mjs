@@ -12,6 +12,6 @@ import prefetch from "@astrojs/prefetch";
 // https://astro.build/config
 export default defineConfig({
   // TODO: Change this in production
-  site: "http://localhost:4321/",
+  site: "http://harrylang100.github.io",
   integrations: [tailwind(), sitemap(), prefetch({ throttle: 3 })],
 });

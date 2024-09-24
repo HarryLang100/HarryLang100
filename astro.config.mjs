@@ -13,6 +13,6 @@ import prefetch from "@astrojs/prefetch";
 export default defineConfig({
   // TODO: Change this in production
   site: "https://harrylang100.github.io",
-  base: "HarryLang100",
+  base: "github.com/HarryLang100",
   integrations: [tailwind(), sitemap(), prefetch({ throttle: 3 })],
 });

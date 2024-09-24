@@ -1,0 +1,111 @@
+---
+import v88Logo from "@assets/images/work_logos/V88.png";
+import lvLogo from "@assets/images/work_logos/LV-Logo.png";
+import primaLogo from "@assets/images/work_logos/Prima.png";
+
+const jobs = [
+  {
+    title: "Solutions Engineer",
+    company: "V88 Apps",
+    image: v88Logo,
+    rounded: true,
+    timeRange: "2024-Present",
+    description:
+      "As a solutions engineer, I develop web apps using the Glide no code app builder.",
+    projects: [
+      "A client feedback portal for a marketing agency",
+      "An app for a New York hair salon to manage its customer list, workspaces, to-do list and job applicants ",
+    ],
+  },
+  {
+    title: "Data Analyst",
+    company: "Prima",
+    image: primaLogo,
+    rounded: true,
+    timeRange: "2021-2024",
+    description:
+      "Developed dashboards, forecasted customer service demand, and analyzed competitor data to support business decisions.",
+    projects: [
+      "Developed and maintained Tableau dashboards, for example one to present customer acquisition data, such as the number of policies sold via different introducers, to senior managers and other stakeholders.",
+      "Modelled the expected number of customer phone calls and online chats over the first year of the company's operations to help determine the number of customer service agents to employ.",
+      "Conducted research on data gathered from price comparison websites, for the purpose of setting organisational benchmarks based on competitor performance. ",
+    ],
+  },
+  {
+    title: "Pricing Analyst",
+    company: "LV=General Insurance",
+    image: lvLogo,
+    rounded: false,
+    timeRange: "2019-2021",
+    description:
+      "Presented pricing analysis, improving models. Built an XGBoost claim severity model during a data science secondment.",
+    projects: [
+      "Presented detailed pricing analysis and proposals to technical and non-technical audience, resulting in incremental changes to pricing models to improve the loss ratio performance of our portfolio.",
+      "Secondment from Oct. 2019 to Jan. 2020 in LV=’s Data Science team in Waterloo; developed a model to predict the severity of accidental damage claims using XGBoost, a machine learning library, resulting in a prototype that could be productionised.",
+    ],
+  },
+];
+---
+
+<section
+  aria-labelledby=":rr:"
+  class="mx-auto max-w-5xl sm:px-6 sm:border-l sm:border-primary-700/40"
+>
+  <div class="grid grid-cols-1 gap-y-8 items-baseline md:grid-cols-4">
+    <h2
+      id=":rr:"
+      class="text-lg font-semibold tracking-tight sm:text-xl text-primary-100"
+    >
+      Experience
+    </h2>
+    <div class="md:col-span-3">
+      <ul role="list" class="space-y-16">
+        {
+          jobs.map((j) => (
+            <li class="flex flex-col items-start">
+              <>
+                <div class="flex flex-row justify-between items-baseline pl-2 w-full border-l border-primary-700">
+                  <div class="flex flex-col">
+                    <div class="flex flex-row gap-4 items-center">
+                      <img
+                        decoding="async"
+                        loading="lazy"
+                        src={j.image.src}
+                        class={`w-9 object-contain ring-1 shadow-md shadow-primary-800/5 ring-primary-900 ${
+                          j.rounded ? "rounded-full" : ""
+                        }`}
+                      />
+                      <h3 class="text-base font-semibold tracking-tight sm:max-w-none sm:text-lg max-w-[20ch] text-primary-100">
+                        {j.company}
+                      </h3>
+                    </div>
+
+                    <h2 class="text-sm mt-2 tracking-tight sm:max-w-none sm:text-base max-w-[20ch] text-primary-300">
+                      {j.title}
+                    </h2>
+                  </div>
+                  <time class="text-sm text-primary-600">{j.timeRange}</time>
+                </div>
+                <p class="z-10 mt-4 text-sm text-primary-300 max-w-[75ch]">
+                  {j.description}
+                </p>
+                <p class="z-10 mt-4 text-sm text-primary-300 font-medium max-w-[75ch]">
+                  Projects have included:
+                </p>
+                <ul class="list-disc ml-4">
+                  {j.projects.map((project: string) => (
+                    <li>
+                      <p class="z-10 mt-4 text-sm text-primary-300 max-w-[75ch]">
+                        {project}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

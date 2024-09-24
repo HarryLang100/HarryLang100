@@ -1,0 +1,132 @@
+---
+import Layout from "@layout/Layout.astro";
+import dannyImage from "@assets/images/favorites/danny.jpg";
+import adamImage from "@assets/images/favorites/Adam.jpg";
+import graduationImage from "@assets/images/favorites/graduation.jpg";
+import helenImage from "@assets/images/favorites/helen.jpg";
+import outoutImage from "@assets/images/favorites/outout.jpg";
+import sandyImage from "@assets/images/favorites/Sandy.jpg";
+import snowImage from "@assets/images/favorites/snow day.jpg";
+import waterPartBenImage from "@assets/images/favorites/waterpark_ben.jpg";
+import willandTim from "@assets/images/favorites/Will and Tim.jpeg";
+
+const gallery = [
+  {
+    image: dannyImage,
+    caption: "At the beach (summer 2017)",
+  },
+  {
+    image: graduationImage,
+    caption: "Graduation! (summer 2016)",
+  },
+  {
+    image: waterPartBenImage,
+    caption: "Waterpark with Ben (summer 2015)",
+  },
+  {
+    image: sandyImage,
+    caption: "Wore him out (early 2018)",
+  },
+  {
+    image: adamImage,
+    caption: "With Adam (winter 2015)",
+  },
+  {
+    image: willandTim,
+    caption: "With Will and Tim at Helen's wedding (summer 2018)",
+  },
+  {
+    image: outoutImage,
+    caption: "Out out (November 2016)",
+  },
+  {
+    image: helenImage,
+    caption: "After work (summer 2016)",
+  },
+];
+---
+
+<Layout
+  pageTitle="About"
+  description="I am Harry, I am a no-code solutions engineer based in Poole, Dorset. I presently work for V88 apps."
+  type="content"
+>
+  <main class="px-8 pt-16">
+    <div class="mt-8">
+      <div class="max-w-5xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">My Favourite Photos</h1>
+
+        <div class="flex flex-row flex-wrap justify-between">
+          {
+            gallery.map((image) => (
+              <div
+                data-image={image.image.src}
+                class="image border border-primary-600 bg-lightercontentbackground w-full sm:w-[46%] h-fit shadow-2xl mt-4 lg:w-[32%] p-4 rounded-lg cursor-pointer"
+              >
+                <img
+                  src={image.image.src}
+                  alt="At the bench"
+                  class="w-full object-cover rounded-lg"
+                />
+                <p class="text-center mt-4 text-primary-100">{image.caption}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div
+        id="imageModal"
+        class="modal fixed inset-0 z-[1000] bg-black bg-opacity-75 flex justify-center items-center"
+      >
+        <div class="relative">
+          <img
+            id="modalImage"
+            src=""
+            alt="Popup Image"
+            class="rounded-lg max-w-full max-h-screen"
+          />
+          <button
+            id="modalclose"
+            class="absolute top-2 border right-2 text-black text-4xl font-bold"
+            >&times;</button
+          >
+        </div>
+      </div>
+
+      <script>
+        const images = document.querySelectorAll(
+          ".image"
+        ) as NodeListOf<HTMLElement>;
+        const modalImage = document.getElementById(
+          "modalImage"
+        ) as HTMLImageElement;
+        const modal = document.getElementById("imageModal") as HTMLElement;
+        const modalCloseButton = document.getElementById(
+          "modalclose"
+        ) as HTMLElement;
+
+        images.forEach((image: HTMLElement) => {
+          image.addEventListener("click", () => {
+            const imageSrc = image.getAttribute("data-image");
+            modalImage.src = imageSrc as string;
+            modal.classList.add("modal-active");
+          });
+        });
+
+        modalCloseButton.addEventListener("click", () => {
+          modal.classList.remove("modal-active");
+        });
+      </script>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .modal {
+    display: none;
+  }
+  .modal-active {
+    display: flex;
+  }
+</style>

@@ -1,0 +1,18 @@
+---
+import Layout from "@layout/Layout.astro";
+
+import MainIntro from "@components/MainIntro.astro";
+import ContactForm from "@components/ContactForm.astro";
+---
+
+<Layout
+  pageTitle="Home"
+  description="I am Harry, I am a no-code solutions engineer based in Poole, Dorset. I presently work for V88 apps."
+  type="website"
+>
+  <main class="flex flex-col gap-8 items-center px-8 mx-auto max-w-[75ch]">
+    <MainIntro />
+
+    <ContactForm />
+  </main>
+</Layout>
